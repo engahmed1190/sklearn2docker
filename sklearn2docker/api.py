@@ -45,7 +45,7 @@ def perform_prediction(probabilistic, orient) -> str:
             prediction = classifier.classifier_object.predict(data.values).tolist()
             logger.debug("Predictions: {}".format(prediction))
 
-        prediction = [classifier.class_names[x] for x in prediction]
+        #prediction = [classifier.class_names[x] for x in prediction]
         prediction_dataframe = DataFrame()
         prediction_dataframe["prediction"] = prediction
     else:
