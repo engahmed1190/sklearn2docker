@@ -27,7 +27,7 @@ class Sklearn2Docker:
 
         if not multi_stage_build:
             self.docker_file = [
-                'FROM frolvlad/alpine-python-machinelearning',
+                'FROM python:3.6-jessie',
                 'RUN mkdir /sklearn2docker',
                 'COPY ./ /sklearn2docker/',
                 'RUN apt-get update && apt-get install -y git',
