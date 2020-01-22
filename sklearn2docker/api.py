@@ -5,7 +5,13 @@ from json import load
 from pandas import DataFrame
 from sklearn.tree import export_graphviz
 from sklearn2docker.classes import *
+import logging
 
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s:%(levelname)s:%(message)s"
+    )
+logger =  logging.getLogger(__name__)
 tensorflow_default_graph = None
 
 app = Flask(__name__)
@@ -37,6 +43,7 @@ def perform_prediction(probabilistic, orient) -> str:
                 prediction = [1 if x > 0.5 else 0 for x in prediction]
         else:
             prediction = classifier.classifier_object.predict(data.values).tolist()
+            logger.debugg("Predictions: {}".format(prediction))
 
         prediction = [classifier.class_names[x] for x in prediction]
         prediction_dataframe = DataFrame()
