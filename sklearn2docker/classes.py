@@ -16,7 +16,7 @@ class BaseClassifier:
 class ScikitLearnClassifier(BaseClassifier):
     def __init__(self, pickle_file: str):
         super().__init__()
-        self.classifier_object = pickle.load(pickle_file)
+        self.classifier_object = pickle.load(open(pickle_file, 'rb'))
 
     def predict(self, data):
         return self.classifier_object.predict(data)
