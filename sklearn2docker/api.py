@@ -43,7 +43,7 @@ def perform_prediction(probabilistic, orient) -> str:
                 prediction = [1 if x > 0.5 else 0 for x in prediction]
         else:
             prediction = classifier.classifier_object.predict(data.values).tolist()
-            logger.debugg("Predictions: {}".format(prediction))
+            logger.debug("Predictions: {}".format(prediction))
 
         prediction = [classifier.class_names[x] for x in prediction]
         prediction_dataframe = DataFrame()
