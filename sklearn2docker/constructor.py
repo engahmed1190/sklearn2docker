@@ -30,6 +30,7 @@ class Sklearn2Docker:
                 'FROM frolvlad/alpine-python-machinelearning',
                 'RUN mkdir /sklearn2docker',
                 'COPY ./ /sklearn2docker/',
+                'RUN apt-get update && apt-get install -y git',
                 'RUN pip install git+git://github.com/engahmed1190/sklearn2docker.git',
                 'RUN pip install -r /sklearn2docker/requirements.txt',
                 'EXPOSE 5000',
