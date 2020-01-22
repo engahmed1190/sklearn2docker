@@ -1,5 +1,5 @@
 import pickle
-
+from sklearn.preprocessing import StandardScaler
 from os.path import isfile
 
 
@@ -19,6 +19,8 @@ class ScikitLearnClassifier(BaseClassifier):
         self.classifier_object = pickle.load(open(pickle_file, 'rb'))
 
     def predict(self, data):
+        std_scaler = StandardScaler()
+        data = std_scaler.fit_transform(data)
         return self.classifier_object.predict(data)
 
     def predict_proba(self, data):
